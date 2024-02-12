@@ -1,0 +1,63 @@
+base_parameter:
+    environment:
+      battery:
+        K_Cav: 5
+        K_Tac: 10
+        K_SoC: 25
+        Q_max: 10.0
+        C_max: 1.0
+        C_min: 0.0
+        ageing_cost: 0.0002
+        battery_value: 2500
+        degradation_model: 'new'
+        running_cost: 0.0
+        ignore_degradation_state: True
+      demand:
+        demand: 10.0
+        unit: d
+      time_discretization:
+        T: 30
+        n_steps: 
+        unit: d
+        freq: 1h
+      sell_to_market: True
+    meta:
+      approximator: RegressionModel
+      battery: BatteryModel
+      demand: ConstantDemandModel
+      environment: BatteryProblem
+      n_samples: 1000
+      simulator: ElectricityPriceMultiFactorSimulator
+      solver: BatteryControlSolver
+      time_discretization: TimeDiscretization
+      transformer: PolynomialTransformer
+    simulator: 
+      seasonal_impact_factor: 1
+      long_term_impact_factor: 1
+      short_term_impact_factor: 1
+      wind_impact_factor: 1
+      K_f: 
+    transformer:
+      degree: 1
+      all_states: True
+      states: []
+
+parameter_changes:
+    # forecast K_f = 0:
+    #   simulator:
+    #     K_f: 0
+    # forecast K_f = 1:
+    #   simulator:
+    #     K_f: 1    
+    # forecast K_f = 3:
+    #   simulator:
+    #     K_f: 3    
+    # forecast K_f = 6:
+    #   simulator:
+    #     K_f: 6    
+    forecast K_f = 12:
+      simulator:
+        K_f: 12
+    forecast K_f = 24:
+      simulator:
+        K_f: 24

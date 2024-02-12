@@ -1,0 +1,116 @@
+base_parameter:
+    environment:
+      battery:
+        K_Cav: 
+        K_Tac: 
+        K_SoC: 
+        Q_max: 10.0
+        C_max: 1.0
+        C_min: 0.0
+        ageing_cost: 0.0004
+        battery_value: 2500
+        degradation_model: new
+        running_cost: 0.0
+        ignore_degradation_state: True
+      demand:
+        demand: 10.0
+        unit: d
+      time_discretization:
+        T: 30
+        n_steps: 
+        unit: d
+        freq: 1h
+      sell_to_market: True
+    meta:
+      approximator: RegressionModel
+      battery: BatteryModel
+      demand: ConstantDemandModel
+      environment: BatteryProblem
+      n_samples: 1000
+      simulator: ElectricityPriceMultiFactorSimulator
+      solver: BatteryControlSolver
+      time_discretization: TimeDiscretization
+      transformer: PolynomialTransformer
+    simulator: 
+      seasonal_impact_factor: 1
+      long_term_impact_factor: 1
+      short_term_impact_factor: 1
+      wind_impact_factor: 0
+    transformer:
+      degree: 2
+      states:
+      - price
+
+parameter_changes:
+    # discretization SoC 10 Cav 5 Tac 5:
+    #   environment:
+    #     battery:
+    #       K_SoC: 10
+    #       K_Cav: 5
+    #       K_Tac: 5
+    # discretization SoC 10 Cav 10 Tac 5:
+    #   environment:
+    #     battery:
+    #       K_SoC: 10
+    #       K_Cav: 10
+    #       K_Tac: 5
+    # discretization SoC 10 Cav 10 Tac 10:
+    #   environment:
+    #     battery:
+    #       K_SoC: 10
+    #       K_Cav: 10
+    #       K_Tac: 10
+    # discretization SoC 10 Cav 20 Tac 20:
+    #   environment:
+    #     battery:
+    #       K_SoC: 10
+    #       K_Cav: 20
+    #       K_Tac: 20
+    # discretization SoC 20 Cav 10 Tac 5:
+    #   environment:
+    #     battery:
+    #       K_SoC: 20
+    #       K_Cav: 10
+    #       K_Tac: 5
+    # discretization SoC 20 Cav 16 Tac 8:
+    #   environment:
+    #     battery:
+    #       K_SoC: 20
+    #       K_Cav: 16
+    #       K_Tac: 8
+    discretization SoC 20 Cav 20 Tac 10:
+      environment:
+        battery:
+          K_SoC: 20
+          K_Cav: 20
+          K_Tac: 10
+    discretization SoC 25 Cav 10 Tac 5:
+      environment:
+        battery:
+          K_SoC: 25
+          K_Cav: 10
+          K_Tac: 5
+    discretization SoC 25 Cav 16 Tac 8:
+      environment:
+        battery:
+          K_SoC: 25
+          K_Cav: 16
+          K_Tac: 8
+    discretization SoC 25 Cav 20 Tac 10:
+      environment:
+        battery:
+          K_SoC: 25
+          K_Cav: 20
+          K_Tac: 5
+    discretization SoC 40 Cav 10 Tac 5:
+      environment:
+        battery:
+          K_SoC: 40
+          K_Cav: 10
+          K_Tac: 5
+    discretization SoC 50 Cav 8 Tac 5:
+      environment:
+        battery:
+          K_SoC: 50
+          K_Cav: 10
+          K_Tac: 5

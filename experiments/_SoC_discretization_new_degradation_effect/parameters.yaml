@@ -1,0 +1,87 @@
+base_parameter:
+    environment:
+      battery:
+        K_Cav: 10
+        K_Tac: 10
+        K_SoC: 
+        Q_max: 10.0
+        C_max: 1.0
+        C_min: 0.0
+        ageing_cost: 0.0004
+        battery_value: 2500
+        degradation_model: new
+        running_cost: 0.0
+        ignore_degradation_state: True
+      demand:
+        demand: 10.0
+        unit: d
+      time_discretization:
+        T: 14
+        n_steps: 
+        unit: d
+        freq: 1h
+    meta:
+      approximator: RegressionModel
+      battery: BatteryModel
+      demand: ConstantDemandModel
+      environment: BatteryProblem
+      n_samples: 1000
+      simulator: ElectricityPriceMultiFactorSimulator
+      solver: BatteryControlSolver
+      time_discretization: TimeDiscretization
+      transformer: PolynomialTransformer
+    simulator: 
+      seasonal_impact_factor: 1
+      long_term_impact_factor: 1
+      short_term_impact_factor: 1
+      wind_impact_factor: 1
+    transformer:
+      degree: 2
+      states:
+      - price
+
+parameter_changes:
+    new degradation no forecast discretization 2:
+      environment:
+        battery:
+          K_SoC: 2
+    new degradation no forecast discretization 4:
+      environment:
+        battery:
+          K_SoC: 4
+    new degradation no forecast discretization 10:
+      environment:
+        battery:
+          K_SoC: 10
+    new degradation no forecast discretization 16:
+      environment:
+        battery:
+          K_SoC: 16
+    new degradation no forecast discretization 20:
+      environment:
+        battery:
+          K_SoC: 20
+    new degradation no forecast discretization 25:
+      environment:
+        battery:
+          K_SoC: 25
+    # new degradation no forecast discretization 50:
+    #   environment:
+    #     battery:
+    #       K_SoC: 50
+    # new degradation no forecast discretization 100:
+    #   environment:
+    #     battery:
+    #       K_SoC: 100
+    # new degradation no forecast discretization 125:
+    #   environment:
+    #     battery:
+    #       K_SoC: 125
+    # new degradation no forecast discretization 200:
+    #   environment:
+    #     battery:
+    #       K_SoC: 200
+    # new degradation no forecast discretization 500:
+    #   environment:
+    #     battery:
+    #       K_SoC: 500
